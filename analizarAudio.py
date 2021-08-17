@@ -143,11 +143,11 @@ for melfrequency in mfccs:
 print("null");
 
 #print(listaFrecuencias)
-lists.append('null')
+lists.append("null")
 print(lists)
 print('Longitud lista: ', len(lists))
 
-with open("features_3_sec.csv", "a", newline='', encoding='utf-8') as fp:
+with open("datos.csv", "a", newline='', encoding='utf-8') as fp:
     wr = csv.writer(fp, dialect='excel')
     wr.writerow(lists)
 

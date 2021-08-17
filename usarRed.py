@@ -30,7 +30,7 @@ import pickle
 import joblib
 
 ############## READ DATA
-general_path = 'features_3_sec.csv'
+general_path = 'datos.csv'
 data = pd.read_csv(general_path)
 data = data.iloc[0:, 1:] 
 data.head()
@@ -83,7 +83,7 @@ def model_assess(model, title = "Default"):
 #joblib.dump(nn, 'prueba.joblib')
 eje = joblib.load('neuralNetwork.joblib')
 preds = eje.predict(X_test)
-print('Accuracy FROM JOBLIB', ':', round(accuracy_score(y_test, preds), 5), '\n')
+#print('Accuracy FROM JOBLIB', ':', round(accuracy_score(y_test, preds), 5), '\n')
 #joblib.dump(nn, 'filename.joblib')
 #s = pickle.dumps(nn)
 #clf2 = pickle.loads(s)
@@ -93,11 +93,11 @@ print('Accuracy FROM JOBLIB', ':', round(accuracy_score(y_test, preds), 5), '\n'
 
 
 # Confusion Matrix
-confusion_matr = confusion_matrix(y_test, preds) #normalize = 'true'
-plt.figure(figsize = (16, 9))
-sns.heatmap(confusion_matr, cmap="Blues", annot=True, 
-            xticklabels = ["blues", "classical", "country", "disco", "hiphop", "jazz", "metal", "pop", "reggae", "rock"],
-           yticklabels=["blues", "classical", "country", "disco", "hiphop", "jazz", "metal", "pop", "reggae", "rock"]);
+#confusion_matr = confusion_matrix(y_test, preds) #normalize = 'true'
+#plt.figure(figsize = (16, 9))
+#sns.heatmap(confusion_matr, cmap="Blues", annot=True,
+ #           xticklabels = ["blues", "classical", "country", "disco", "hiphop", "jazz", "metal", "pop", "reggae", "rock"],
+  #         yticklabels=["blues", "classical", "country", "disco", "hiphop", "jazz", "metal", "pop", "reggae", "rock"]);
 #plt.savefig("conf matrix")
 #plt.show()
 
@@ -175,10 +175,12 @@ filename = ntpath.basename(x)
 name = filename
 # Find songs most similar to another son
 series = sim_df_names[name].sort_values(ascending = False)
-listaX = series[series.index[0]].tolist()
+listaX = series[series.index[1]].tolist()
 #print("Lista: ", listaX)
 # Remove cosine similarity == 1 (songs will always have the best match with themselves)
 series = series.drop(name)
+#print("\n*******\nSimilar songs to ", name)
+#print(series.head(5))
 nombreCoincidencia = series.index[0]
 porcentaje = listaX
 #print("Lista: ", listaX)

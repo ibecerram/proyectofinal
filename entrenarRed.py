@@ -29,7 +29,7 @@ import joblib
 
 
 ############## READ DATA
-general_path = 'features_3_sec.csv'
+general_path = 'datos.csv'
 data = pd.read_csv(f'{general_path}')
 data = data.iloc[0:, 1:] 
 data.head()
