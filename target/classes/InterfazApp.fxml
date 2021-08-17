@@ -24,19 +24,14 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Archivos">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#agregarAudio" text="Agregar" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Datos">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#borrarDatos" text="Borrar" />
             </items>
           </Menu>
         </menus>
@@ -55,7 +50,44 @@
       </VBox>
    </right>
    <left>
-      <VBox prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="458.0" prefWidth="150.0">
+               <children>
+                  <Label text="Sound Analyzer" textAlignment="CENTER" textFill="#e4d315" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Graba un audio o selecciona uno de tus archivos" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Géneros soportados:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Blues, Classical, Country, Disco, HipHop, Jazz, Metal, Pop, Reggae &amp; Rock" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children></VBox>
+         </children></VBox>
    </left>
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -101,7 +133,7 @@
                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                            </VBox.margin>
                                        </HBox>
-                                       <Button fx:id="btnExit" onAction="#audioExit" mnemonicParsing="false" prefWidth="171.0" text="Quitar reproduccion" />
+                                       <Button fx:id="btnExit" mnemonicParsing="false" onAction="#audioExit" prefWidth="171.0" text="Quitar reproduccion" />
                                    </children>
                                </VBox>
                            </children>
@@ -134,4 +166,7 @@
         </tabs>
       </TabPane>
    </center>
+   <bottom>
+      <Label prefHeight="22.0" prefWidth="132.0" text="MyAnalyzerSound" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

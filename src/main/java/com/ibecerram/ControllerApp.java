@@ -128,6 +128,16 @@ public class ControllerApp implements Initializable
         this.listaAudios.clear();
     }
 
+    /**
+     * Borra todos los datos.
+     */
+    public void borrarDatos()
+    {
+        reiniciarListView();
+        tableViewCanciones.getItems().clear();
+        permitirAnalisis();
+    }
+
 
     /**
      * Agrega las canciones obtenidas en una tabla de datos.
