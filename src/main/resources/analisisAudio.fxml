@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="413.0" prefWidth="468.0" stylesheets="@darktheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ibecerram.analisisAudioController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="146.0" layoutY="53.0" text="Nombre de la canción">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="168.0" text="Duración de la canción">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="151.0" layoutY="288.0" text="Género de la canción">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField editable="false" layoutX="159.0" layoutY="94.0" />
+            <TextField editable="false" layoutX="156.0" layoutY="207.0" />
+            <TextField editable="false" layoutX="159.0" layoutY="322.0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
