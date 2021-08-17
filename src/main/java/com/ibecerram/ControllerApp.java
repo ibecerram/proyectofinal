@@ -1,24 +1,19 @@
 package com.ibecerram;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerApp implements Initializable
@@ -27,7 +22,8 @@ public class ControllerApp implements Initializable
     private Button btnAgregarAudio;
 
     @FXML
-    private ListView listViewAudios = new ListView();
+    private ListView<File> listViewAudios = new ListView();
+    private ArrayList<File> listaAudios = new ArrayList<>();
 
     private FileChooser fileChooserAudio = new FileChooser();
 
@@ -39,10 +35,10 @@ public class ControllerApp implements Initializable
         try
         {
             fileAudio = fileChooserAudio.showOpenDialog(stage);
-            if(fileAudio.exists() && fileAudio != null)
+            if(fileAudio != null)
             {
                 listViewAudios.getItems().add(fileAudio);
-                reproducirAudio(fileAudio);
+                listaAudios.add(fileAudio);
             }
         }
         catch (Exception e)
@@ -86,26 +82,14 @@ public class ControllerApp implements Initializable
 
 
     @FXML
-    public void analizarAudio(){
-
-        Stage stage = null;
-        FXMLLoader loader = new FXMLLoader();
-        try
+    public void analizarAudio()
+    {
+        for(File file : listaAudios)
         {
-            loader.setLocation(new URL("file:src/main/resources/analisisAudio.fxml"));
-            stage = new Stage();
-            stage.setTitle("Análisis del audio");
-            Scene scena = new Scene(loader.load(), 468, 413);
-            scena.getStylesheets().add("file:src/main/resources/darktheme.css");
-            stage.setScene(scena);
-        } catch (Exception e)
-        {
-            e.printStackTrace();
+            Analizador analizador = new Analizador();
+            analizador.analizarAudio(file.getAbsolutePath());
+            analizador.usarRedNeuronal();
         }
-
-        stage.showAndWait();
-
-
     }
 
 

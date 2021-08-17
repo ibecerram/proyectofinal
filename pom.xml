@@ -25,6 +25,31 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- DEPENDENCIAS PARA JAVAFX -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>11.0.2</version>
+    </dependency>
+
+
+    <!-- JAVA PYTHON BRIDGE https://github.com/ninia/jep/wiki-->
+    <dependency>
+      <groupId>black.ninia</groupId>
+      <artifactId>jep</artifactId>
+      <version>3.9.1</version>
+    </dependency>
   </dependencies>
 
   <build>
