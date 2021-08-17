@@ -77,4 +77,18 @@ public class Excepciones extends Exception
         }
     }
 
+    /**
+     * Excepción EscrituraArchivo, se ejecuta al momento de no encontrar el archivo que servirá de conexión entre el programa y la red neuronal.
+     */
+    public static class ErrorCreacionAudio extends Excepciones
+    {
+        /**
+         * Muestra el mensaje al usuario.
+         */
+        public ErrorCreacionAudio()
+        {
+            alertas.errorAudioCreado();
+        }
+    }
+
 }

@@ -6,7 +6,9 @@ import com.ibecerram.data.Excepciones;
 import com.ibecerram.files.Canciones;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -71,7 +73,7 @@ public class ControllerApp implements Initializable
         }
         catch (Exception e)
         {
-            new Excepciones.ArchivoNoSeleccionado();
+            new Excepciones.ArchivoNoEncontrado();
         }
     }
 
@@ -136,6 +138,31 @@ public class ControllerApp implements Initializable
         reiniciarListView();
         tableViewCanciones.getItems().clear();
         permitirAnalisis();
+    }
+
+
+    @FXML
+    private Button btnGrabarAudio;
+    /**
+     * Método que permite abrir la interfaz para la grabación del audio.
+     */
+    public void grabarAudio()
+    {
+        Stage stage = null;
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/InterfazGrabarAudio.fxml"));
+        try
+        {
+            stage = new Stage();
+            stage.setTitle("Grabar Audio");
+            Scene scene = new Scene(loader.load(), 450, 400);
+            stage.setScene(scene);
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        stage.showAndWait();
     }
 
 

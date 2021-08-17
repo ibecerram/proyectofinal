@@ -98,11 +98,12 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="536.0" prefWidth="599.0">
                            <children>
-                              <Button fx:id="btnAgregarAudio" mnemonicParsing="false" onAction="#agregarAudio" prefHeight="34.0" prefWidth="250.0" text="Agregar Audio">
+                              <Button fx:id="btnGrabarAudio"  mnemonicParsing="false" onAction="#grabarAudio" prefHeight="34.0" prefWidth="250.0" text="Grabar Audio">
                                  <VBox.margin>
                                     <Insets bottom="30.0" />
                                  </VBox.margin>
                               </Button>
+                              <Button fx:id="btnAgregarAudio" mnemonicParsing="false" onAction="#agregarAudio" prefHeight="34.0" prefWidth="250.0" text="Agregar Audio" />
       
                                <VBox fx:id="vBoxReproducirAudio" alignment="CENTER" prefHeight="413.0" prefWidth="468.0" visible="false">
                                    <children>

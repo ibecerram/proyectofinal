@@ -43,6 +43,9 @@ public class Alertas
         }
     }
 
+    /**
+     * Alerta que muestra un mensaje al no haber seleccionado un archivo.
+     */
     public void archivoNoSeleccionado()
     {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
@@ -52,6 +55,9 @@ public class Alertas
         alerta.showAndWait();
     }
 
+    /**
+     * Alerta que muestra un mensaje al no haber encontrado un esperado.
+     */
     public void archivoNoEncontrado()
     {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -61,6 +67,9 @@ public class Alertas
         alerta.showAndWait();
     }
 
+    /**
+     * Alerta que muestra un mensaje debido a un error en el interpretador de Python.
+     */
     public void errorPython()
     {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -70,6 +79,9 @@ public class Alertas
         alerta.showAndWait();
     }
 
+    /**
+     * Alerta que muestra un mensaje al no mostrar correctamente una imagen.
+     */
     public void errorImagenNoCargada()
     {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -79,12 +91,39 @@ public class Alertas
         alerta.showAndWait();
     }
 
+    /**
+     * Alerta que muestra un mensaje al intentar escribir el en archivo del path.
+     */
     public void errorEscrituraArchivo()
     {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle("ERROR");
         alerta.setHeaderText("Escritura en Archivo incorrecta");
         alerta.setContentText("Imposible leer el archivo, \nintenta de nuevo.");
+        alerta.showAndWait();
+    }
+
+    /**
+     * Alerta que muestra un mensaje de error al intentar grabar un audio.
+     */
+    public void errorAudioCreado()
+    {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("ERROR");
+        alerta.setHeaderText("No se pudo grabar el audio.");
+        alerta.setContentText("Ocurrió un error al grabar el audio, \nintenta de nuevo.");
+        alerta.showAndWait();
+    }
+
+    /**
+     * Alerta que muestra un mensaje al grabar exitosamente un audio.
+     */
+    public void audioCreado()
+    {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("INFORMATION");
+        alerta.setHeaderText("¡Audio correcto!");
+        alerta.setContentText("El audio se creó en la carpeta inicial.");
         alerta.showAndWait();
     }
 }

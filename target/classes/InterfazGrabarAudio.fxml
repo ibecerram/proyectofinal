@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="450.0" stylesheets="@darktheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ibecerram.ControllerGrabarAudio">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="450.0">
+               <children>
+                  <Label text="Da click en 'Record' para grabar el audio.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageView" visible="false" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#grabarAudioSistema" prefWidth="100.0" text="Record" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button mnemonicParsing="false" prefWidth="100.0" text="Salir" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
