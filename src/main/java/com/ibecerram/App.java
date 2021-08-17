@@ -9,16 +9,25 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 /**
- * Hello world!
+ * Clase principal de la aplicación, permite lanzar la app.
  *
  */
 public class App extends Application
 {
+    /**
+     * Lanza la app para su despliegue.
+     * @param args
+     */
     public static void main( String[] args )
     {
         launch(args);
     }
 
+    /**
+     * Inicializa la apertura de la interfaz.
+     * @param primaryStage Escenario principal.
+     * @throws Exception Exception por error.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception
     {

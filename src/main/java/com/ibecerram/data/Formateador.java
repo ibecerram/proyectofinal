@@ -1,7 +1,15 @@
 package com.ibecerram.data;
 
+/**
+ * Clase Formateador, permite obtener la entrada resultante y transformarla en datos válidos.
+ */
 public class Formateador
 {
+    /**
+     * Permite obtener el nombre de la canción analizada de la red neuronal.
+     * @param line Resultado obtenido por la red neuronal
+     * @return Nombre de la canción.
+     */
     public String getNombre(String line)
     {
         String str = "";
@@ -10,6 +18,11 @@ public class Formateador
         return str;
     }
 
+    /**
+     * Permite obtener el género de la canción analizada de la red neuronal.
+     * @param line Resultado obtenido por la red neuronal
+     * @return Género de la canción.
+     */
     public String getGenero(String line)
     {
         String str = "";
@@ -21,6 +34,11 @@ public class Formateador
         return genero;
     }
 
+    /**
+     * Permite obtener el porcentaje de clasificación de la canción analizada de la red neuronal.
+     * @param line Resultado obtenido por la red neuronal
+     * @return Porcentaje de la canción con el género asignado.
+     */
     public Double getPorcentaje(String line)
     {
         String str = "";

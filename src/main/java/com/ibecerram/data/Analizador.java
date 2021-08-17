@@ -5,8 +5,12 @@ import com.ibecerram.files.Canciones;
 import jep.Interpreter;
 import jep.SharedInterpreter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/**
+ * Clase Analizador, permite la comunicación con los archivos necesarios de Python.
+ */
 public class Analizador
 {
     private final String pathCSV = "";
@@ -14,6 +18,9 @@ public class Analizador
     private Formateador formateador = new Formateador();
     private String pathTemporal = "";
 
+    /**
+     * Método que permite entrenar la red neuronal en el script entrenarRed.py
+     */
     public void entrenarRedNeuronal()
     {
         try
@@ -28,10 +35,14 @@ public class Analizador
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            new Excepciones.ErrorPython();
         }
     }
 
+    /**
+     * Método que permite analizar un audio de entrada, usando el archivo analizarAudio.py
+     * @param path Ubicación del archivo
+     */
     public void analizarAudio(String path)
     {
         Interpreter interpreter = null;
@@ -52,10 +63,13 @@ public class Analizador
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            new Excepciones.ErrorPython();
         }
     }
 
+    /**
+     * Método que permite utilizar la red neuronal para analizar canciones, utilizando usarRed.py
+     */
     public void usarRedNeuronal()
     {
         try
@@ -76,7 +90,7 @@ public class Analizador
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            new Excepciones.ErrorPython();
         }
     }
 

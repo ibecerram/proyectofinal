@@ -1,6 +1,8 @@
 package com.ibecerram;
 
+import com.ibecerram.data.Alertas;
 import com.ibecerram.data.Analizador;
+import com.ibecerram.data.Excepciones;
 import com.ibecerram.files.Canciones;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +26,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase ControllerApp controla el funcionamiento de los componentes de la interfaz principal.
+ */
 public class ControllerApp implements Initializable
 {
     @FXML
@@ -42,6 +47,9 @@ public class ControllerApp implements Initializable
     @FXML
     private BarChart barChartGeneros;
 
+    /**
+     * Método que permite agregar un audio para su análisis.
+     */
     @FXML
     public void agregarAudio()
     {
@@ -54,11 +62,16 @@ public class ControllerApp implements Initializable
             {
                 listViewAudios.getItems().add(fileAudio);
                 listaAudios.add(fileAudio);
+                permitirAnalisis();
+            }
+            else
+            {
+                new Excepciones.ArchivoNoSeleccionado();
             }
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            new Excepciones.ArchivoNoSeleccionado();
         }
     }
 
@@ -71,6 +84,9 @@ public class ControllerApp implements Initializable
     @FXML
     private Button btnAnalizar;
 
+    /**
+     * Método que permite analizar los audios agregados al programa y obtener sus datos.
+     */
     @FXML
     public void analizarAudio()
     {
@@ -83,16 +99,29 @@ public class ControllerApp implements Initializable
 
         this.listaCanciones.addAll(analizador.getListaCanciones());
 
-        for(Canciones canciones : listaCanciones)
-        {
-            canciones.getInfo();
-            System.out.println("------------");
-        }
-
         agregarCanciones();
         reiniciarListView();
     }
 
+    /**
+     * Verifica si hay audios agregados para habilitar su análisis.
+     */
+    @FXML
+    public void permitirAnalisis()
+    {
+        if(listViewAudios.getItems().isEmpty())
+        {
+            btnAnalizar.setVisible(false);
+        }
+        else
+        {
+            btnAnalizar.setVisible(true);
+        }
+    }
+
+    /**
+     * Borra los audios agregados.
+     */
     public void reiniciarListView()
     {
         this.listViewAudios.getItems().clear();
@@ -100,6 +129,9 @@ public class ControllerApp implements Initializable
     }
 
 
+    /**
+     * Agrega las canciones obtenidas en una tabla de datos.
+     */
     public void agregarCanciones()
     {
         this.tableViewCanciones.getItems().clear();
@@ -110,6 +142,9 @@ public class ControllerApp implements Initializable
         this.setContadorGeneros();
     }
 
+    /**
+     * Permite agregar las canciones existentes por cada genero.
+     */
     public void setContadorGeneros()
     {
         this.barChartGeneros.getXAxis().setLabel("Genero");
@@ -133,6 +168,11 @@ public class ControllerApp implements Initializable
 
     }
 
+    /**
+     * Permite contar las canciones por genero.
+     * @param genero Género a buscar.
+     * @return Cantidad de canciones por dicho género.
+     */
     public int contarGenero(String genero)
     {
         int contador = 0;
@@ -173,6 +213,10 @@ public class ControllerApp implements Initializable
     private MediaPlayer mediaPlayer;
 
 
+    /**
+     * Agrega un audio para su reproducción.
+     * @param path Ubicación del archivo de audio.
+     */
     public void agregarAudio(String path)
     {
         this.file = new File(path);
@@ -182,6 +226,9 @@ public class ControllerApp implements Initializable
         agregarImagen();
     }
 
+    /**
+     * Permite agregar la imagen del audio (.gif).
+     */
     public void agregarImagen()
     {
         try
@@ -192,10 +239,13 @@ public class ControllerApp implements Initializable
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            new Excepciones.ImagenNoCargada();
         }
     }
 
+    /**
+     * Termina el audio y esconde los controles de reproducción.
+     */
     public void audioExit()
     {
         vBoxReproducirAudio.setVisible(false);
@@ -203,18 +253,27 @@ public class ControllerApp implements Initializable
         audioStop();
     }
 
+    /**
+     * Permite terminar la reprodución del audio.
+     */
     @FXML
     public void audioStop()
     {
         mediaPlayer.stop();
     }
 
+    /**
+     * Permite pausar la reproducción del audio.
+     */
     @FXML
     public void audioPause()
     {
         mediaPlayer.pause();
     }
 
+    /**
+     * Permite iniciar la reproducción del audio.
+     */
     @FXML
     public void audioPlay()
     {
@@ -228,6 +287,11 @@ public class ControllerApp implements Initializable
 
     private Alertas alertas = new Alertas();
 
+    /**
+     * Inicializa la interfaz con valores preestablecidos.
+     * @param location URL Location.
+     * @param resources ResourceBundle resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -266,7 +330,11 @@ public class ControllerApp implements Initializable
                         else if(opcion == 2)
                         {
                             int index = listViewAudios.getSelectionModel().getSelectedIndex();
+                            System.out.println(index);
                             listViewAudios.getItems().remove(index);
+                            listaAudios.remove(index);
+                            permitirAnalisis();
+
                         }
                     }
                 }
