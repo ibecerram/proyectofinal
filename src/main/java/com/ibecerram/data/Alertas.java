@@ -126,4 +126,13 @@ public class Alertas
         alerta.setContentText("El audio se creó en la carpeta inicial.");
         alerta.showAndWait();
     }
+
+    public void analisisCompleto()
+    {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("INFORMATION");
+        alerta.setHeaderText("¡Análisis terminado!");
+        alerta.setContentText("Se completó el análisis de las \ncanciones ingresadas.");
+        alerta.showAndWait();
+    }
 }

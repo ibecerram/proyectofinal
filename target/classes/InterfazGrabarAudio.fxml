@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="450.0" stylesheets="@darktheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ibecerram.ControllerGrabarAudio">
+<BorderPane prefHeight="400.0" prefWidth="450.0" stylesheets="@darktheme.css" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ibecerram.ControllerGrabarAudio">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,7 +33,6 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Salir" />
                </children>
             </VBox>
          </children>

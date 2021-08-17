@@ -27,11 +27,7 @@ public class Analizador
         {
             Interpreter interpreter = new SharedInterpreter();
             interpreter.runScript("entrenarRed.py");
-            Object object = interpreter.getValue("xPrueba");
-            System.out.println(object);
             interpreter.close();
-            /*Archivo archivo = new Archivo();
-            archivo.escribirArchivo("mipath");*/
         }
         catch (Exception e)
         {
@@ -54,9 +50,7 @@ public class Analizador
 
             interpreter = new SharedInterpreter();
             interpreter.runScript("analizarAudio.py");
-            Object object = interpreter.getValue("xPrueba");
             interpreter.close();
-            System.out.println(object);
 
             /*Archivo archivo = new Archivo();
             archivo.escribirArchivo("mipath");*/

@@ -49,6 +49,9 @@ public class ControllerApp implements Initializable
     @FXML
     private BarChart barChartGeneros;
 
+    @FXML
+    private TabPane tabPanePrincipal;
+
     /**
      * Método que permite agregar un audio para su análisis.
      */
@@ -59,6 +62,8 @@ public class ControllerApp implements Initializable
         Stage stage = new Stage();
         try
         {
+            fileChooserAudio.setTitle("Selecciona tu audio a analizar.");
+            fileChooserAudio.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos .WAV", "*.wav"));
             fileAudio = fileChooserAudio.showOpenDialog(stage);
             if(fileAudio != null)
             {
@@ -138,6 +143,7 @@ public class ControllerApp implements Initializable
         reiniciarListView();
         tableViewCanciones.getItems().clear();
         permitirAnalisis();
+        barChartGeneros.getData().clear();
     }
 
 
@@ -177,6 +183,8 @@ public class ControllerApp implements Initializable
             tableViewCanciones.getItems().add(canciones);
         }
         this.setContadorGeneros();
+        tabPanePrincipal.getSelectionModel().select(1);
+        alertas.analisisCompleto();
     }
 
     /**
@@ -184,6 +192,7 @@ public class ControllerApp implements Initializable
      */
     public void setContadorGeneros()
     {
+        barChartGeneros.getData().clear();
         this.barChartGeneros.getXAxis().setLabel("Genero");
         this.barChartGeneros.getYAxis().setLabel("Cantidad");
 
@@ -254,7 +263,7 @@ public class ControllerApp implements Initializable
      * Agrega un audio para su reproducción.
      * @param path Ubicación del archivo de audio.
      */
-    public void agregarAudio(String path)
+    public void reproducirAudio(String path)
     {
         this.file = new File(path);
         Media media = new Media(file.toURI().toString());
@@ -361,7 +370,7 @@ public class ControllerApp implements Initializable
                         if(opcion == 1)
                         {
                             int index = listViewAudios.getSelectionModel().getSelectedIndex();
-                            agregarAudio(listViewAudios.getItems().get(index).getAbsolutePath());
+                            reproducirAudio(listViewAudios.getItems().get(index).getAbsolutePath());
                             vBoxReproducirAudio.setVisible(true);
                         }
                         else if(opcion == 2)
